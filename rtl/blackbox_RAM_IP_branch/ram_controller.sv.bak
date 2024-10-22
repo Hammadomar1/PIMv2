@@ -1,0 +1,140 @@
+module ram_controller (
+    input logic         clk,              // Clock signal
+    input logic         reset_n,          // Active-low reset signal
+
+    // RISC-V core interface
+    input logic [31:0]  riscv_addr,       // Address from RISC-V core
+    input logic [31:0]  riscv_wdata,      // Write data from RISC-V core
+    input logic  [3:0]  riscv_wmask,      // Write mask from RISC-V core
+    input logic         riscv_rstrb,      // Read strobe from RISC-V core
+    input logic         riscv_wen,        // Write enable from RISC-V core
+    output logic [31:0] riscv_rdata,      // Read data to RISC-V core
+    output logic        riscv_rbusy,      // Read busy signal to RISC-V core
+    output logic        riscv_wbusy,      // Write busy signal to RISC-V core
+
+    // RAM IP interface
+    output logic [9:0]  ram_addr,         // Address to RAM IP
+    output logic [31:0] ram_wdata,        // Write data to RAM IP
+    output logic        ram_wen,          // Write enable to RAM IP
+    output logic        ram_rden,         // Read enable to RAM IP
+    output logic  [3:0] ram_byteena,      // Byte enable to RAM IP
+    input  logic [31:0] ram_rdata,        // Read data from RAM IP
+
+    // I/O interface (special address handling)
+    output logic [31:0] io_data_out,      // Write data to I/O
+    output logic        io_write_en,      // I/O write enable
+    output logic [31:0] io_rdata,         // Data read from I/O
+    input  logic        io_busy           // I/O busy signal
+);
+
+    // State definitions for FSM
+    typedef enum logic [1:0] {
+        IDLE,       // Wait for a read or write request
+        READ,       // Process a read request
+        WRITE,      // Process a write request
+        WAIT        // Wait for completion of a transaction
+    } state_t;
+
+    state_t state, next_state;
+
+    // Address all-ones detection for I/O access (0xFFFFFFFF)
+    logic is_io_access;
+    always_comb begin
+        is_io_access = (riscv_addr == 32'hFFFFFFFF);
+    end
+
+    // Internal signals for the FSM
+    logic read_in_progress, write_in_progress;
+
+    // FSM: Next state logic and outputs
+    always_ff @(posedge clk or negedge reset_n) begin
+        if (!reset_n) begin
+            state <= IDLE;
+        end else begin
+            state <= next_state;
+        end
+    end
+
+    // Assign outputs based on the state
+    always_comb begin
+        // Default signal values
+        next_state = state;
+        read_in_progress = 1'b0;
+        write_in_progress = 1'b0;
+        riscv_rbusy = 1'b0;
+        riscv_wbusy = 1'b0;
+
+        ram_rden = 1'b0;
+        ram_wen = 1'b0;
+        io_write_en = 1'b0;
+
+        case (state)
+            IDLE: begin
+                // Check if a read or write is requested
+                if (riscv_rstrb) begin
+                    next_state = READ;
+                end else if (riscv_wen) begin
+                    next_state = WRITE;
+                end
+            end
+
+            READ: begin
+                // Initiate a read operation
+                if (is_io_access) begin
+                    riscv_rbusy = io_busy;  // Busy signal from I/O
+                    read_in_progress = 1'b1;
+                    if (!io_busy) begin
+                        next_state = IDLE;
+                    end
+                end else begin
+                    ram_rden = 1'b1;        // Enable RAM read
+                    riscv_rbusy = 1'b1;
+                    read_in_progress = 1'b1;
+                    next_state = WAIT;
+                end
+            end
+
+            WRITE: begin
+                // Initiate a write operation
+                if (is_io_access) begin
+                    io_write_en = 1'b1;    // Enable I/O write
+                    riscv_wbusy = io_busy; // Busy signal from I/O
+                    write_in_progress = 1'b1;
+                    if (!io_busy) begin
+                        next_state = IDLE;
+                    end
+                end else begin
+                    ram_wen = 1'b1;         // Enable RAM write
+                    riscv_wbusy = 1'b1;
+                    write_in_progress = 1'b1;
+                    next_state = WAIT;
+                end
+            end
+
+            WAIT: begin
+                // Wait for completion of read/write transaction
+                if (!riscv_rstrb && !riscv_wen) begin
+                    next_state = IDLE; // Go back to idle when no operations are pending
+                end
+            end
+        endcase
+    end
+
+    // Assign outputs for RAM interface
+    assign ram_addr     = riscv_addr[9:0];  // Use lower 10 bits for RAM address
+    assign ram_wdata    = riscv_wdata;
+    assign ram_byteena  = riscv_wmask;
+
+    // Handle I/O writes when address is all ones (0xFFFFFFFF)
+    assign io_data_out  = riscv_wdata;
+
+    // Read data multiplexer (choose between RAM and I/O)
+    always_comb begin
+        if (is_io_access) begin
+            riscv_rdata = io_rdata;  // Use I/O data for all-ones address
+        end else begin
+            riscv_rdata = ram_rdata; // Use RAM data otherwise
+        end
+    end
+
+endmodule
