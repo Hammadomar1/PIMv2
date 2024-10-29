@@ -1,0 +1,132 @@
+m255
+K4
+z2
+Z0 !s99 nomlopt
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+!s11f vlog 2021.2 2021.04, Apr 14 2021
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z1 dE:/Thesis/FInal
+T_opt
+!s110 1730236317
+VPEi0SeiS32R2XEIYe6AYL2
+04 17 4 work ram_controller_tb fast 0
+=1-8cc84b2b7625-67214f9c-2af-20c
+Z2 !s124 OEM10U2 
+Z3 o-quiet -auto_acc_if_foreign -work work +acc
+Z4 tCvgOpt 0
+n@_opt
+Z5 OL;O;2021.2;73
+R1
+T_opt1
+!s110 1730236343
+V`CA;>Lem=Z=b?zChYfe[b2
+Z6 04 14 4 work pim_controller fast 0
+=1-8cc84b2b7625-67214fb6-350-46e0
+R2
+o-quiet -auto_acc_if_foreign -work work
+R4
+n@_opt1
+R5
+R1
+T_opt2
+Z7 !s110 1730236703
+VKmim9_LJMbE5?1zbkY8_j0
+R6
+=3-8cc84b2b7625-6721511f-1c4-37d0
+R2
+R3
+R4
+n@_opt2
+R5
+vpim_controller
+Z8 DXx6 sv_std 3 std 0 22 9oUSJO;AeEaW`l:M@^WG92
+R7
+!i10b 1
+!s100 n2oHb?>dzk7F6>]U4[WDd2
+Ij3GTkWfMQ8QoJKkAleCC81
+S1
+R1
+w1730236696
+8E:/Thesis/FInal/pim_controller.sv
+FE:/Thesis/FInal/pim_controller.sv
+!i122 50
+L0 1 105
+Z9 VDg1SIo80bB@j0V0VzS_@n1
+Z10 OL;L;2021.2;73
+r1
+!s85 0
+31
+Z11 !s108 1730236703.000000
+!s107 E:/Thesis/FInal/pim_controller.sv|
+!s90 -reportprogress|300|-work|work|E:/Thesis/FInal/pim_controller.sv|
+!i113 0
+Z12 o-work work -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+R4
+vram_controller
+R8
+R7
+!i10b 1
+!s100 d>QPaEM]iZ]i?Wo]Q9OQ^3
+I>c=jiclKzONjD0bQ?^eDB3
+S1
+R1
+w1730236299
+8E:/Thesis/FInal/ram_controller.sv
+FE:/Thesis/FInal/ram_controller.sv
+!i122 48
+L0 1 170
+R9
+R10
+r1
+!s85 0
+31
+!s108 1730236702.000000
+!s107 E:/Thesis/FInal/ram_controller.sv|
+!s90 -reportprogress|300|-work|work|E:/Thesis/FInal/ram_controller.sv|
+!i113 0
+R12
+R4
+vram_controller_tb
+R8
+R7
+!i10b 1
+!s100 PlZ=LO?2SN5V6[c@KL5Ri0
+I<_:<kDWDVm9DT<Xa@@]Yc0
+S1
+R1
+w1729692024
+8E:/Thesis/FInal/ram_controller_tb.sv
+FE:/Thesis/FInal/ram_controller_tb.sv
+!i122 49
+L0 1 103
+R9
+R10
+r1
+!s85 0
+31
+R11
+!s107 E:/Thesis/FInal/ram_controller_tb.sv|
+!s90 -reportprogress|300|-work|work|E:/Thesis/FInal/ram_controller_tb.sv|
+!i113 0
+R12
+R4

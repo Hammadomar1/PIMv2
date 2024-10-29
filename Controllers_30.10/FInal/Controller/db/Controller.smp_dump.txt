@@ -1,0 +1,7 @@
+
+State Machine - |pim_controller|ram_controller:ram_controller_inst|state
+Name state.WAIT state.WRITE state.READ state.IDLE 
+state.IDLE 0 0 0 0 
+state.READ 0 0 1 1 
+state.WRITE 0 1 0 1 
+state.WAIT 1 0 0 1 
