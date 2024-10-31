@@ -1,0 +1,158 @@
+m255
+K4
+z2
+Z0 !s99 nomlopt
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+R0
+!s11f vlog 2021.2 2021.04, Apr 14 2021
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z1 dD:/Study/FALL2024/Thesis2/IP_SoC/sim
+T_opt
+!s110 1730401386
+VHBliAfTk[42fd<L;cnbAd1
+04 6 4 work SOC_tb fast 0
+=1-8c04ba9a6792-6723d46a-203-4ef8
+!s124 OEM10U5 
+o-quiet -auto_acc_if_foreign -work work -L altera_mf +acc
+Z2 tCvgOpt 0
+n@_opt
+OL;O;2021.2;73
+R1
+vFemtoRV32IM
+Z3 DXx6 sv_std 3 std 0 22 9oUSJO;AeEaW`l:M@^WG92
+Z4 !s110 1730402067
+!i10b 1
+!s100 ;OHGZ<;1S[QC?kGdlGQTb0
+IOGZG;^4m?jUgn`?LHI_Z21
+S1
+R1
+w1729685371
+8../rtl/FemtoRV32IM.v
+F../rtl/FemtoRV32IM.v
+!i122 85
+L0 23 446
+Z5 VDg1SIo80bB@j0V0VzS_@n1
+Z6 OL;L;2021.2;73
+r1
+!s85 0
+31
+Z7 !s108 1730402067.000000
+!s107 ../rtl/FemtoRV32IM.v|
+!s90 -reportprogress|300|-sv|../rtl/FemtoRV32IM.v|
+!i113 0
+Z8 o-sv -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+R2
+n@femto@r@v32@i@m
+vRAM1_IP
+R3
+R4
+!i10b 1
+!s100 mlbOkV2G?g2O[[S;=aDE92
+IC1=RhYGkaRDSh7^E3DDHo2
+S1
+R1
+w1730314110
+8../ip/RAM1_IP.v
+F../ip/RAM1_IP.v
+!i122 87
+L0 40 74
+R5
+R6
+r1
+!s85 0
+31
+R7
+!s107 ../ip/RAM1_IP.v|
+!s90 -reportprogress|300|-sv|../ip/RAM1_IP.v|
+!i113 0
+R8
+R2
+n@r@a@m1_@i@p
+vram_controller
+R3
+R4
+!i10b 1
+!s100 U1<XGoNSG1SGcVYjLh3520
+I0dIM=`cM>fLIe1^9T2K^E0
+S1
+R1
+w1730401378
+8../rtl/ram_controller.sv
+F../rtl/ram_controller.sv
+!i122 86
+L0 1 165
+R5
+R6
+r1
+!s85 0
+31
+R7
+Z9 !s107 ../rtl/ram_controller.sv|../rtl/SoC.sv|
+Z10 !s90 -reportprogress|300|-sv|../rtl/SoC.sv|../rtl/ram_controller.sv|
+!i113 0
+R8
+R2
+vSoC
+R3
+R4
+!i10b 1
+!s100 >1GZeaIkYB1YoeFXdg^>B0
+IjPKZ=c;RVed717KR^B98f1
+S1
+R1
+w1730313229
+8../rtl/SoC.sv
+F../rtl/SoC.sv
+!i122 86
+L0 1 61
+R5
+R6
+r1
+!s85 0
+31
+R7
+R9
+R10
+!i113 0
+R8
+R2
+n@so@c
+vSOC_tb
+R3
+R4
+!i10b 1
+!s100 l9K;?hLLQlPTKVnd][i7O0
+I<cd>zH37SH]o2o<o`CKCT1
+S1
+R1
+w1730315407
+8SOC_tb.sv
+FSOC_tb.sv
+!i122 88
+L0 3 52
+R5
+R6
+r1
+!s85 0
+31
+R7
+!s107 SOC_tb.sv|
+!s90 -reportprogress|300|-sv|SOC_tb.sv|
+!i113 0
+R8
+R2
+n@s@o@c_tb
