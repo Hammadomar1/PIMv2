@@ -1,0 +1,12 @@
+
+State Machine - |SoC|PIM_controller:PIM_Control|ram_controller:ram_controller_inst|state
+Name state.IDLE state.WRITE state.READ 
+state.IDLE 0 0 0 
+state.READ 1 0 1 
+state.WRITE 1 1 0 
+
+State Machine - |SoC|RAM1_controller:RAM1_Control|ram_controller:RAM1_CTRL|state
+Name state.IDLE state.WRITE state.READ 
+state.IDLE 0 0 0 
+state.READ 1 0 1 
+state.WRITE 1 1 0 

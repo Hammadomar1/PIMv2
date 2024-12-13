@@ -1,0 +1,17 @@
+Analysis & Synthesis Status : Successful - Fri Nov  8 13:06:19 2024
+Quartus Prime Version : 22.1std.2 Build 922 07/20/2023 SC Lite Edition
+Revision Name : IP_SoC
+Top-level Entity Name : SoC
+Family : Cyclone V
+Logic utilization (in ALMs) : N/A
+Total registers : 3344
+Total pins : 35
+Total virtual pins : 0
+Total block memory bits : 65,792
+Total DSP Blocks : 6
+Total HSSI RX PCSs : 0
+Total HSSI PMA RX Deserializers : 0
+Total HSSI TX PCSs : 0
+Total HSSI PMA TX Serializers : 0
+Total PLLs : 0
+Total DLLs : 0
